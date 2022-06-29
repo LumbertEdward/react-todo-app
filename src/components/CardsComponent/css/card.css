@@ -1,0 +1,8 @@
+.incomplete {
+    color: red;
+    cursor: pointer;
+}
+
+.complete {
+    color: green
+}
