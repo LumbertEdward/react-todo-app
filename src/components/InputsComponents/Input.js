@@ -8,20 +8,6 @@ import {
 export default function Input({ listAction }) {
     const [item, setItem] = useState("")
 
-    useEffect(() => {
-        let status = false
-
-        return () => {
-            if (status == false) {
-                // localStorage.clear()
-            }
-            else {
-                status = true
-            }
-        }
-    })
-
-
     const handleOnClick = (e) => {
         e.preventDefault();
 
@@ -51,7 +37,7 @@ export default function Input({ listAction }) {
                     label="Enter ToDo Item"
                     onKeyUp={(e) => setItem(e.target.value)}
                 />
-                {/* <input type="text" placeholder="Enter ToDo Item" onChange={(e) => setItem(e.target.value)}/> */}
+                
                 <Button onClick={handleOnClick} variant="contained" type="submit">Add</Button>
             </Stack>
         </div>

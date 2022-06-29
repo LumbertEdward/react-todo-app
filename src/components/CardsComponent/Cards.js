@@ -6,9 +6,7 @@ import {
 } from '@mui/material';
 import '../CardsComponent/css/card.css'
 
-export default function Cards({ items, newSetList }) {
-    const [listComplete, setListComplete] = useState(localStorage.getItem("itemsComplete") == undefined ? [] : JSON.parse(localStorage.getItem("itemsComplete")))
-
+export default function Cards({ items, newSetList, compList, compFunc }) {
     return (
         <>
             {
@@ -16,7 +14,7 @@ export default function Cards({ items, newSetList }) {
                     <>
                         {
                             items.map((item) => (
-                                <Stack direction="row" justifyContent="center" style={{marginBottom: "5px"}}>
+                                <Stack direction="row" justifyContent="center" style={{marginBottom: "5px", padding: "0%"}}>
                                     <Card sx={{ width: 300 }}>
                                         <CardContent>
                                             <p className="incomplete" onClick={() => {
@@ -34,7 +32,7 @@ export default function Cards({ items, newSetList }) {
 
                                                 cmplt.push(updatedItem)
 
-                                                setListComplete(cmplt)
+                                                compFunc(cmplt)
 
                                                 localStorage.setItem("itemsComplete", JSON.stringify(cmplt))
 
@@ -55,10 +53,10 @@ export default function Cards({ items, newSetList }) {
 
             }
             {
-                listComplete.length > 0 ?
+                compList.length > 0 ?
                     <>
                         {
-                            listComplete.map((item) => (
+                            compList.map((item) => (
                                 <Stack direction="row" justifyContent="center"  style={{marginBottom: "5px"}}>
                                     <Card sx={{ width: 300 }}>
                                         <CardContent>
